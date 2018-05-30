@@ -6,9 +6,12 @@ public class Ball : MonoBehaviour {
 
     [SerializeField]
     private float _intialSpeed;
+    [SerializeField]
+    private float _bounceCooldown = .01f;
 
     private Rigidbody2D _body;
     private Vector2 _velocity;
+    private float _lastBounceTime;
 
     private void Start()
     {
@@ -45,7 +48,22 @@ public class Ball : MonoBehaviour {
         }
         else
         {
+            // prevent bouncing multiple times in a single frame with a very small cooldown
+            if (Time.time - _lastBounceTime < _bounceCooldown) return;
+
+            _lastBounceTime = Time.time;
             Vector2 normal = collision.contacts[0].normal;
+            // prevent any weirdness with normal calculation, we should only be bouncing in cardinal directions to clamp to them 
+            if (Mathf.Abs(normal.x) > Mathf.Abs(normal.y))
+            {
+                normal.x = 1 * Mathf.Sign(normal.x);
+                normal.y = 0;
+            }
+            else
+            {
+                normal.x = 0;
+                normal.y = 1 * Mathf.Sign(normal.y);
+            }
             _velocity = _velocity - 2 * (Vector2.Dot(_velocity, normal)) * normal;
         }
     }
