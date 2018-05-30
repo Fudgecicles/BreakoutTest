@@ -35,7 +35,19 @@ public class GameController : MonoBehaviour {
 
         // listen to events
         EventMessenger.Instance.OnAllBallsDestroyed.AddListener(LoseLife);
-	}
+        EventMessenger.Instance.OnBrickDestroyed.AddListener(BlockDestroyed);
+        EventMessenger.Instance.OnLevelFinished.AddListener(LevelFinished);
+    }
+
+    void LevelFinished()
+    {
+        _level += 1;
+    }
+
+    void BlockDestroyed()
+    {
+        _score += 1;
+    }
 
     void LoseLife()
     {

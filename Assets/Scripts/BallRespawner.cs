@@ -14,6 +14,7 @@ public class BallRespawner : MonoBehaviour {
         SpawnBall();
         EventMessenger.Instance.OnBallDestroyed.AddListener(BallDestroyed);
         EventMessenger.Instance.OnGameStarted.AddListener(SpawnBall);
+        EventMessenger.Instance.OnLevelFinished.AddListener(ResetBalls);
     }
 
     void BallDestroyed()
@@ -31,5 +32,15 @@ public class BallRespawner : MonoBehaviour {
         if (!GameController.GameStarted) return;
         _ballsSpawned += 1;
         Instantiate(_ballPrefab, transform.position, Quaternion.identity, transform);
+    }
+
+    public void ResetBalls()
+    {
+        Ball[] balls = FindObjectsOfType<Ball>();
+        for(int k=0; k < balls.Length; k++)
+        {
+            Destroy(balls[k].gameObject);
+        }
+        SpawnBall();
     }
 }

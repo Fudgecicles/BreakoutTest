@@ -11,6 +11,8 @@ public class EventMessenger : MonoBehaviour {
     public UnityEvent OnGameStarted;
     public UnityEvent OnBallDestroyed;
     public UnityEvent OnAllBallsDestroyed;
+    public UnityEvent OnBrickDestroyed;
+    public UnityEvent OnLevelFinished;
     public UnityEvent OnGameEnded;
 
 
