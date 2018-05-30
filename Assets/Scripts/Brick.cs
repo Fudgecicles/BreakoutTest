@@ -13,11 +13,13 @@ public class Brick : MonoBehaviour {
     private int _hitsTaken;
     private int _points;
     private float _ballSpeed;
+    private Animator _anim;
 
 	// Use this for initialization
 	void Awake () {
         _renderer = GetComponent<SpriteRenderer>();
-	}
+        _anim = GetComponent<Animator>();
+    }
 
     public void SetTier(BlockTier tier)
     {
@@ -29,6 +31,7 @@ public class Brick : MonoBehaviour {
     void TakeDamage()
     {
         _hitsTaken += 1;
+        _anim.SetTrigger("Hit");
         if(_hitsTaken >= _healthAlpha.Length)
         {
             EventMessenger.Instance.OnBrickDestroyed.Invoke(_points);
