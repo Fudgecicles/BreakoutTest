@@ -5,9 +5,10 @@ using UnityEngine;
 [System.Serializable]
 public struct BlockTier
 {
-    public float Row;
+    public int Row;
     public Color Color;
     public int Points;
+    public float BallSpeed;
 }
 
 /// <summary>

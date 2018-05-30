@@ -8,9 +8,11 @@ public class Brick : MonoBehaviour {
     [SerializeField]
     private float[] _healthAlpha;
 
+    
     private SpriteRenderer _renderer;
     private int _hitsTaken;
     private int _points;
+    private float _ballSpeed;
 
 	// Use this for initialization
 	void Awake () {
@@ -21,6 +23,7 @@ public class Brick : MonoBehaviour {
     {
         _renderer.color = tier.Color;
         _points = tier.Points;
+        _ballSpeed = tier.BallSpeed;
     }
 	
     void TakeDamage()
@@ -41,9 +44,11 @@ public class Brick : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Ball>())
+        Ball ball = collision.gameObject.GetComponent<Ball>();
+        if (ball)
         {
             TakeDamage();
+            ball.SetSpeed(_ballSpeed);
         }
     }
 

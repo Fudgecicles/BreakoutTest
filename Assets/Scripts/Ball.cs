@@ -39,6 +39,13 @@ public class Ball : MonoBehaviour {
         _body.MovePosition(_body.position + _velocity * Time.deltaTime);
     }
 
+    public void SetSpeed(float speed)
+    {
+        float currentMagnitude = _velocity.magnitude;
+        float newMagnitude = Mathf.Max(speed, currentMagnitude);
+        _velocity = _velocity.normalized * newMagnitude;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Paddle paddle = collision.gameObject.GetComponent<Paddle>();
