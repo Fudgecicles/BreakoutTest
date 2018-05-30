@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4314169855984502}
   - component: {fileID: 212730047407312252}
   - component: {fileID: 58164044289979394}
+  - component: {fileID: 114395304260127340}
+  - component: {fileID: 50691298461470280}
   m_Layer: 0
   m_Name: prf_Ball
   m_TagString: Untagged
@@ -41,6 +43,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50691298461470280
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1603616217171578}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!58 &58164044289979394
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -56,6 +78,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.25
+--- !u!114 &114395304260127340
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1603616217171578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 823acaeb915238542a8d2356125dbecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _intialSpeed: 5
 --- !u!212 &212730047407312252
 SpriteRenderer:
   m_ObjectHideFlags: 1

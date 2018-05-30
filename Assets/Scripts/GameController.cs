@@ -27,17 +27,25 @@ public class GameController : MonoBehaviour {
 
 	void Awake () {
         _lives = _startingLives;
+
+        // spawn start play canvas and setup callbacks
         _startPlayCanvas = Instantiate(_startPlayCanvasPrefab);
         Button startPlayButton = _startPlayCanvas.GetComponentInChildren<Button>();
         startPlayButton.onClick.AddListener(StartGame);
 	}
 
+    /// <summary>
+    /// called when start play button is pressed
+    /// </summary>
     void StartGame()
     {
         if (!GameStarted)
         {
+            // start game, trigger events, spawn in game hud
             GameStarted = true;
             EventMessenger.Instance.GameStarted.Invoke();
+            _hud = Instantiate(_gameHudCanvasPrefab).GetComponent<GameHud>();
+            // if the canvas exists destroy it to clear the screen
             if (_startPlayCanvas)
             {
                 Destroy(_startPlayCanvas);
@@ -47,6 +55,7 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        // update hud values if hud exists
         if (_hud)
         {
             _hud.SetValues(_level, _lives, _score);
