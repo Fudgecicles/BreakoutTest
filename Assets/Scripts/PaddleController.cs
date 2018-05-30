@@ -8,6 +8,10 @@ public class PaddleController : MonoBehaviour {
     private float _paddleMoveSpeed;
     [SerializeField]
     private float _paddleSmoothDamp;
+    [SerializeField]
+    private float _minPos;
+    [SerializeField]
+    private float _maxPos;
 
     private float _paddleVel;
     private float _paddleDampVel;
@@ -43,7 +47,10 @@ public class PaddleController : MonoBehaviour {
         // speed lerping
         _paddleVel = Mathf.SmoothDamp(_paddleVel, _targetPaddleSpeed, ref _paddleDampVel, _paddleSmoothDamp, 100, Time.deltaTime);
 
-        // translate in x direction based on velocity
-        transform.Translate(new Vector2(_paddleVel * Time.deltaTime, 0));
-	}
+        // translate in x direction based on velocity and clamp
+        Vector3 pos = transform.position;
+        pos.x += _paddleVel * Time.deltaTime;
+        pos.x = Mathf.Clamp(pos.x, _minPos, _maxPos);
+        transform.position = pos;   
+    }
 }
