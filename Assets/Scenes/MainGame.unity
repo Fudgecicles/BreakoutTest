@@ -687,6 +687,11 @@ Prefab:
       propertyPath: _maxPos
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114164856734330700, guid: 291ee381e4c7dbc499094cbc9e16a95b,
+        type: 2}
+      propertyPath: _paddleMoveSpeed
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 291ee381e4c7dbc499094cbc9e16a95b, type: 2}
   m_IsPrefabParent: 0
@@ -778,7 +783,7 @@ GameObject:
   - component: {fileID: 1980580368}
   - component: {fileID: 1980580367}
   - component: {fileID: 1980580369}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BallKillCollider
   m_TagString: Untagged
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}

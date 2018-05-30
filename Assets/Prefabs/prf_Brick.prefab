@@ -102,6 +102,8 @@ MonoBehaviour:
   _healthAlpha:
   - 1
   - 0.5
+  _destroyParticles: {fileID: 198114586462943618, guid: ab4561d0b6e0728428784e35331cc1ae,
+    type: 2}
 --- !u!212 &212547594503692636
 SpriteRenderer:
   m_ObjectHideFlags: 1
