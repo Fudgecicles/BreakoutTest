@@ -44,9 +44,9 @@ public class GameController : MonoBehaviour {
         _level += 1;
     }
 
-    void BlockDestroyed()
+    void BlockDestroyed(int points)
     {
-        _score += 1;
+        _score += points;
     }
 
     void LoseLife()

@@ -2,14 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public struct BlockTier
+{
+    public float Row;
+    public Color Color;
+    public int Points;
+}
+
 /// <summary>
 /// Spawns a grid of bricks based on sprite renderer bounds
 /// </summary>
 [RequireComponent(typeof(SpriteRenderer))]
 public class BrickSpawner : MonoBehaviour {
 
-    
 
+
+
+    [SerializeField]
+    private BlockTier[] _tiers;
     [SerializeField]
     private GameObject _brickPrefab;
     [SerializeField]
@@ -29,7 +40,7 @@ public class BrickSpawner : MonoBehaviour {
 
    
 
-    void BrickDestroyed()
+    void BrickDestroyed(int points)
     {
         _bricksSpawned -= 1;
         if(_bricksSpawned == 0)
@@ -44,10 +55,15 @@ public class BrickSpawner : MonoBehaviour {
         Bounds bounds = GetComponent<SpriteRenderer>().bounds;
         Bounds brickBounds = _brickPrefab.GetComponent<SpriteRenderer>().bounds;
 
+        int currentTier = 0;
         int rowCount = 0;
         // iterate through each row 
         for (float y = 0; y < bounds.size.y; y += brickBounds.size.y + _vertSpacing, rowCount++)
         {
+            if(currentTier + 1 < _tiers.Length && _tiers[currentTier + 1].Row <= rowCount)
+            {
+                currentTier = currentTier + 1;
+            }
             // use a parent for each row to make centering easier
             GameObject rowParent = new GameObject("Row " + rowCount);
 
@@ -56,7 +72,8 @@ public class BrickSpawner : MonoBehaviour {
             // iterate through row spawning bricks
             for (float x = 0; x < bounds.size.x; x += brickBounds.size.x + _horizontalSpacing)
             {
-                Instantiate(_brickPrefab, new Vector2(x - bounds.size.x / 2, 0), Quaternion.identity, rowParent.transform);
+                GameObject spawnedBrick = Instantiate(_brickPrefab, new Vector2(x - bounds.size.x / 2, 0), Quaternion.identity, rowParent.transform);
+                spawnedBrick.GetComponent<Brick>().SetTier(_tiers[currentTier]);
                 _bricksSpawned += 1;
                 finalLength = x;
             }

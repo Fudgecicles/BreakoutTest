@@ -33,7 +33,6 @@ public class Paddle : MonoBehaviour {
             lerpAmount = Mathf.Round(lerpAmount * _descritizedBouncingSections - .5f);
             // offset by 1 because otherwise we would only bounce fully if we're completely right of the paddle
             lerpAmount =  (float)lerpAmount / (_descritizedBouncingSections-1);
-            Debug.Log(lerpAmount);
         }
         // get the degree to shoot the paddle at, offset by 90 so that the center is straight up
         float bounceDegree = Mathf.Lerp(_maxBounceAngle, -_maxBounceAngle, lerpAmount) + 90;

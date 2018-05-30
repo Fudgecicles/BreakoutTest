@@ -4,29 +4,38 @@ using UnityEngine;
 
 public class Brick : MonoBehaviour {
 
-    [SerializeField]
-    private Color[] _healthColors;
 
-    SpriteRenderer _renderer;
-    int _hitsTaken;
+    [SerializeField]
+    private float[] _healthAlpha;
+
+    private SpriteRenderer _renderer;
+    private int _hitsTaken;
+    private int _points;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         _renderer = GetComponent<SpriteRenderer>();
-        _renderer.color = _healthColors[0];
 	}
+
+    public void SetTier(BlockTier tier)
+    {
+        _renderer.color = tier.Color;
+        _points = tier.Points;
+    }
 	
     void TakeDamage()
     {
         _hitsTaken += 1;
-        if(_hitsTaken >= _healthColors.Length)
+        if(_hitsTaken >= _healthAlpha.Length)
         {
-            EventMessenger.Instance.OnBrickDestroyed.Invoke();
+            EventMessenger.Instance.OnBrickDestroyed.Invoke(_points);
             Destroy(gameObject);
         }
         else
         {
-            _renderer.color = _healthColors[_hitsTaken];
+            Color curCol = _renderer.color;
+            curCol.a = _healthAlpha[_hitsTaken];
+            _renderer.color = curCol;
         }
     }
 

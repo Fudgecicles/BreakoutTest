@@ -11,7 +11,7 @@ public class EventMessenger : MonoBehaviour {
     public UnityEvent OnGameStarted;
     public UnityEvent OnBallDestroyed;
     public UnityEvent OnAllBallsDestroyed;
-    public UnityEvent OnBrickDestroyed;
+    public BrickDestroyedEvent OnBrickDestroyed = new BrickDestroyedEvent();
     public UnityEvent OnLevelFinished;
     public UnityEvent OnGameEnded;
 
@@ -29,3 +29,5 @@ public class EventMessenger : MonoBehaviour {
     }
 
 }
+
+public class BrickDestroyedEvent : UnityEvent<int>{ }

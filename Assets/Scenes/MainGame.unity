@@ -529,6 +529,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b2cb82c91e173c40b257e33f24e3ef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _tiers:
+  - Row: 0
+    Color: {r: 0.7075472, g: 0, b: 0.10896112, a: 1}
+    Points: 5
+  - Row: 2
+    Color: {r: 0.8490566, g: 0.5252167, b: 0.028034903, a: 1}
+    Points: 3
+  - Row: 4
+    Color: {r: 0.40873343, g: 0.745283, b: 0.31287822, a: 1}
+    Points: 1
   _brickPrefab: {fileID: 1913739208245922, guid: e8f1f4f2bf508a24899a0cd0c51e8a89,
     type: 2}
   _horizontalSpacing: 0.1
