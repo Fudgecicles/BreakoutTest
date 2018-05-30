@@ -8,8 +8,10 @@ public class EventMessenger : MonoBehaviour {
 
     public static EventMessenger Instance { get; private set; }
 
-    public UnityEvent GameStarted;
-    public UnityEvent GameEnded;
+    public UnityEvent OnGameStarted;
+    public UnityEvent OnBallDestroyed;
+    public UnityEvent OnAllBallsDestroyed;
+    public UnityEvent OnGameEnded;
 
 
     private void Awake()

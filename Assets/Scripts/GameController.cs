@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;   
 
 /// <summary>
-/// manages game state, calls events
+/// manages game state
 /// </summary>
 public class GameController : MonoBehaviour {
 
@@ -32,7 +32,24 @@ public class GameController : MonoBehaviour {
         _startPlayCanvas = Instantiate(_startPlayCanvasPrefab);
         Button startPlayButton = _startPlayCanvas.GetComponentInChildren<Button>();
         startPlayButton.onClick.AddListener(StartGame);
+
+        // listen to events
+        EventMessenger.Instance.OnAllBallsDestroyed.AddListener(LoseLife);
 	}
+
+    void LoseLife()
+    {
+        _lives -= 1;
+        if(_lives == 0)
+        {
+            EndGame();
+        }
+    }
+
+    void EndGame()
+    {
+        GameStarted = false;
+    }
 
     /// <summary>
     /// called when start play button is pressed
@@ -43,7 +60,7 @@ public class GameController : MonoBehaviour {
         {
             // start game, trigger events, spawn in game hud
             GameStarted = true;
-            EventMessenger.Instance.GameStarted.Invoke();
+            EventMessenger.Instance.OnGameStarted.Invoke();
             _hud = Instantiate(_gameHudCanvasPrefab).GetComponent<GameHud>();
             // if the canvas exists destroy it to clear the screen
             if (_startPlayCanvas)

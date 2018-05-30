@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 223039378705688918}
   - component: {fileID: 114696884658486588}
   - component: {fileID: 114550396275502132}
+  - component: {fileID: 114331457981337388}
   m_Layer: 5
   m_Name: prf_GameCanvas
   m_TagString: Untagged
@@ -269,6 +270,20 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 1
+--- !u!114 &114331457981337388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1101102993785822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb314cb196d97664ca0b06fc2bb43ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _livesValue: {fileID: 114497311979901546}
+  _levelValue: {fileID: 114054178041452770}
+  _scoreValue: {fileID: 114098952584058480}
 --- !u!114 &114422995786004996
 MonoBehaviour:
   m_ObjectHideFlags: 1

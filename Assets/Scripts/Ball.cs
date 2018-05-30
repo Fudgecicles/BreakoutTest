@@ -12,13 +12,23 @@ public class Ball : MonoBehaviour {
 
     private void Start()
     {
-        EventMessenger.Instance.GameStarted.AddListener(StartGame);
         _body = GetComponent<Rigidbody2D>();
     }
 
-    void StartGame()
+    void Launch()
     {
+        transform.parent = null; 
         _velocity = Vector2.up * _intialSpeed;
+    }
+
+    private void Update()
+    {
+        if (!GameController.GameStarted) return;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Launch();
+        }
     }
 
     private void FixedUpdate()

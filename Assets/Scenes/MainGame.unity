@@ -141,12 +141,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 993650f641602c945824790804294433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameStarted:
+  OnGameStarted:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  GameEnded:
+  OnBallDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnGameEnded:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -178,7 +183,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &180426889
 GameObject:
@@ -340,7 +345,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &416676031
 GameObject:
@@ -618,6 +623,11 @@ GameObject:
   m_PrefabParentObject: {fileID: 1733983315824092, guid: 291ee381e4c7dbc499094cbc9e16a95b,
     type: 2}
   m_PrefabInternal: {fileID: 1243973328}
+--- !u!4 &867170393 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4111540597130036, guid: 291ee381e4c7dbc499094cbc9e16a95b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1243973328}
 --- !u!114 &867170395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -630,48 +640,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxBounceAngle: 80
---- !u!1001 &870520015
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4314169855984502, guid: a62fe48828d1a1c4ca17f6d1cf7e39e2, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 4314169855984502, guid: a62fe48828d1a1c4ca17f6d1cf7e39e2, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -3.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4314169855984502, guid: a62fe48828d1a1c4ca17f6d1cf7e39e2, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0.013671875
-      objectReference: {fileID: 0}
-    - target: {fileID: 4314169855984502, guid: a62fe48828d1a1c4ca17f6d1cf7e39e2, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4314169855984502, guid: a62fe48828d1a1c4ca17f6d1cf7e39e2, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4314169855984502, guid: a62fe48828d1a1c4ca17f6d1cf7e39e2, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4314169855984502, guid: a62fe48828d1a1c4ca17f6d1cf7e39e2, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4314169855984502, guid: a62fe48828d1a1c4ca17f6d1cf7e39e2, type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: a62fe48828d1a1c4ca17f6d1cf7e39e2, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &1243973328
 Prefab:
   m_ObjectHideFlags: 0
@@ -743,7 +711,7 @@ Transform:
   - {fileID: 2075263294}
   - {fileID: 843798326}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1980580366
 GameObject:
@@ -754,6 +722,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1980580368}
   - component: {fileID: 1980580367}
+  - component: {fileID: 1980580369}
   m_Layer: 0
   m_Name: BallKillCollider
   m_TagString: Untagged
@@ -797,8 +766,61 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1980580369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1980580366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bf57360672dc034da9e3e8938f64cec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &2037460623
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2037460624}
+  - component: {fileID: 2037460625}
+  m_Layer: 0
+  m_Name: BallRespawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2037460624
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2037460623}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.006666667, y: 1.6000004, z: 0.013671875}
+  m_LocalScale: {x: 0.33333334, y: 4, z: 1}
+  m_Children: []
+  m_Father: {fileID: 867170393}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2037460625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2037460623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27b3489ceb5c9254484f51f939f87478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ballPrefab: {fileID: 1603616217171578, guid: a62fe48828d1a1c4ca17f6d1cf7e39e2,
+    type: 2}
 --- !u!1 &2075263293
 GameObject:
   m_ObjectHideFlags: 0
