@@ -16,6 +16,8 @@ public class GameController : MonoBehaviour {
     [SerializeField]
     private GameObject _gameHudCanvasPrefab;
     [SerializeField]
+    private GameObject _levelIntroCanvasPrefab;
+    [SerializeField]
     private int _startingLives = 3;
 
     private int _lives;
@@ -42,6 +44,8 @@ public class GameController : MonoBehaviour {
     void LevelFinished()
     {
         _level += 1;
+        GameObject introCanvas = Instantiate(_levelIntroCanvasPrefab);
+        introCanvas.GetComponent<LevelIntro>().SetLevel(_level);
     }
 
     void BlockDestroyed(int points)
