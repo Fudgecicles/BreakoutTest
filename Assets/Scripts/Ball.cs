@@ -49,11 +49,12 @@ public class Ball : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Paddle paddle = collision.gameObject.GetComponent<Paddle>();
+        // if we hit paddle do paddle physics
         if (paddle)
         {
             _velocity = paddle.GetBouncedVelocity(collision.contacts[0].point, _velocity);
         }
-        else
+        else // otherwise bounce based on normal
         {
             // prevent bouncing multiple times in a single frame with a very small cooldown
             if (Time.time - _lastBounceTime < _bounceCooldown) return;

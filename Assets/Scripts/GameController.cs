@@ -12,6 +12,10 @@ public class GameController : MonoBehaviour {
 
     public static bool GameStarted { get; private set; }
 
+    public int Lives { get; private set; }
+    public bool DebugEnabled { get { return _debugEnabled; } }
+
+
     [SerializeField]
     private GameObject _startPlayCanvasPrefab;
     [SerializeField]
@@ -27,9 +31,9 @@ public class GameController : MonoBehaviour {
     [SerializeField]
     private bool _debugEnabled;
 
-    public bool DebugEnabled { get { return _debugEnabled; } }
 
-    public int Lives { get; private set; }
+
+
     private int _score = 0;
     private int _level = 1;
 

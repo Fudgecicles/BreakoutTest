@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// Triggers event when animation has finished playing
+/// </summary>
 public class AnimationEndMessenger : AdvancedStateMachineBehaviour {
 
     public UnityEvent OnStateFinished = new UnityEvent();

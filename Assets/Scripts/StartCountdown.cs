@@ -34,12 +34,13 @@ public class StartCountdown : MonoBehaviour {
         int preDecrement = (int)_timer;
         _timer -= Time.deltaTime;
         int postDecrement = (int)_timer;
-        if(preDecrement != postDecrement)
+        // if int has changed then update and bounce
+        if (preDecrement != postDecrement)
         {
             _text.text = preDecrement.ToString();
             _anim.SetTrigger("Bounce");
         }
-        if(_timer <= 0)
+        if(_timer <= 0) // if timer is done then fade and say go 
         {
             _text.text = "GO!";
             _anim.SetTrigger("Bounce");

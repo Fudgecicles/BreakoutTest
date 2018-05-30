@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// State machine that injects a name we can use to lookup state machines with 
+/// </summary>
 public class AdvancedStateMachineBehaviour : StateMachineBehaviour
 {
     public string name;

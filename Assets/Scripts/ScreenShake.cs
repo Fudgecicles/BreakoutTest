@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// perlin noise based screenshake I've copied for all my projects 
+/// </summary>
 public class ScreenShake : MonoBehaviour
 {
 
