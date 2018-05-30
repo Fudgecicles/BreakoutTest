@@ -8,11 +8,13 @@ public class EventMessenger : MonoBehaviour {
 
     public static EventMessenger Instance { get; private set; }
 
+    public UnityEvent OnCountdownStarted;
     public UnityEvent OnGameStarted;
     public UnityEvent OnBallDestroyed;
     public UnityEvent OnAllBallsDestroyed;
     public BrickDestroyedEvent OnBrickDestroyed = new BrickDestroyedEvent();
     public UnityEvent OnLevelFinished;
+    public UnityEvent OnLevelStarted;
     public UnityEvent OnGameEnded;
 
 

@@ -17,6 +17,7 @@ public class LevelIntro : MonoBehaviour {
     void DestroySelf()
     {
         Destroy(gameObject);
+        EventMessenger.Instance.OnLevelStarted.Invoke();
     }
 
     public void SetLevel(int level)

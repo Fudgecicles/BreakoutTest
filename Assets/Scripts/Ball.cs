@@ -18,7 +18,7 @@ public class Ball : MonoBehaviour {
         _body = GetComponent<Rigidbody2D>();
     }
 
-    void Launch()
+    public void Launch()
     {
         transform.parent = null; 
         _velocity = Vector2.up * _intialSpeed;

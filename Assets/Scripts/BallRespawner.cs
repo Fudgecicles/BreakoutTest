@@ -11,9 +11,8 @@ public class BallRespawner : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        SpawnBall();
         EventMessenger.Instance.OnBallDestroyed.AddListener(BallDestroyed);
-        EventMessenger.Instance.OnGameStarted.AddListener(SpawnBall);
+        EventMessenger.Instance.OnGameStarted.AddListener(SpawnBallInitial);
         EventMessenger.Instance.OnLevelFinished.AddListener(ResetBalls);
     }
 
@@ -27,11 +26,17 @@ public class BallRespawner : MonoBehaviour {
         }
     }
 
-    void SpawnBall()
+    // function to spawn and launch the ball immediately 
+    void SpawnBallInitial()
     {
-        if (!GameController.GameStarted) return;
+        SpawnBall().GetComponent<Ball>().Launch();
+    }
+
+    GameObject SpawnBall()
+    {
+        if (GameController.Instance.Lives <= 0) return null;
         _ballsSpawned += 1;
-        Instantiate(_ballPrefab, transform.position, Quaternion.identity, transform);
+        return Instantiate(_ballPrefab, transform.position, Quaternion.identity, transform);
     }
 
     public void ResetBalls()
@@ -41,6 +46,7 @@ public class BallRespawner : MonoBehaviour {
         {
             Destroy(balls[k].gameObject);
         }
+        _ballsSpawned = 0;
         SpawnBall();
     }
 }

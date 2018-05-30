@@ -97,6 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c56fe5ae1d330944ad0851929927fdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hitShakeAmount: 0.25
+  _dieShakeAmount: 0.5
   _healthAlpha:
   - 1
   - 0.5
