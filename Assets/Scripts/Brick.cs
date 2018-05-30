@@ -11,6 +11,8 @@ public class Brick : MonoBehaviour , IPointerDownHandler, IPointerUpHandler, IPo
     private float _dieShakeAmount;
     [SerializeField]
     private float[] _healthAlpha;
+    [SerializeField]
+    private ParticleSystem _destroyParticles;
 
     
     private SpriteRenderer _renderer;
@@ -47,6 +49,8 @@ public class Brick : MonoBehaviour , IPointerDownHandler, IPointerUpHandler, IPo
             GetComponent<Collider2D>().enabled = false;
             _anim.SetTrigger("Destroy");
             _destroyed = true;
+            ParticleSystem system = Instantiate(_destroyParticles, transform.position, Quaternion.identity);
+            system.GetComponent<ParticleSystemRenderer>().material.SetColor("_Color", _renderer.color);
         }
         // damaged
         else

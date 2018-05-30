@@ -17,6 +17,9 @@ public class PaddleController : MonoBehaviour {
     private float _paddleDampVel;
     private float _targetPaddleSpeed;
 
+    private bool _leftPressed;
+    private bool _rightPressed;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -27,20 +30,25 @@ public class PaddleController : MonoBehaviour {
         if (!GameController.GameStarted) return;
 
         // input
+        // need to store pressed bools because its possible for up to be processed without down if its held before the game starts
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
+            _rightPressed = true;
             _targetPaddleSpeed += _paddleMoveSpeed;
         }
-        else if (Input.GetKeyUp(KeyCode.RightArrow))
+        else if (Input.GetKeyUp(KeyCode.RightArrow) && _rightPressed)
         {
+            _rightPressed = false;
             _targetPaddleSpeed -= _paddleMoveSpeed;
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
+            _leftPressed = true;
             _targetPaddleSpeed -= _paddleMoveSpeed;
         }
-        else if (Input.GetKeyUp(KeyCode.LeftArrow))
+        else if (Input.GetKeyUp(KeyCode.LeftArrow) && _leftPressed)
         {
+            _leftPressed = false;
             _targetPaddleSpeed += _paddleMoveSpeed;
         }
 
